@@ -1,0 +1,48 @@
+import { useRef, useState } from "react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import Content1 from "../Components/Content1";
+import Content from "../Components/Content";
+import Content3 from "../Components/Content3";
+import {text1,text2} from "../Components/Text"
+import SplitText from "gsap/SplitText";
+import ScrollTrigger from "gsap/ScrollTrigger";
+gsap.registerPlugin(useGSAP,ScrollTrigger,SplitText)
+
+const App = () => {
+  
+    const [timelines, setTimelines] = useState({});
+
+  const registerTimeline = (key, tl) => {
+    setTimelines(prev => ({ ...prev, [key]: tl }));
+  };
+
+  const ref =useRef(null)
+  useGSAP(() => {
+    if (timelines.A && timelines.B) {
+      const master = gsap.timeline({ paused: true });
+      master
+        .add(timelines.A)
+        .add(timelines.B, ">");
+      master.play();
+    }
+  }, [timelines]
+  
+  )
+
+  return (
+    <div ref={ref} className="absolute w-full h-full  bg-red-200 flex flex-col items-center text-center text-black">
+      <Content text={text1} url="src/assets/i3.png" registerTimeline={registerTimeline} />
+      <Content1 text={text2} url="src/assets/i2.png"  registerTimeline={registerTimeline} />
+    </div>
+
+  );
+};
+
+export default App;
+
+// url="src/assets/i3.png"
+
+//url="src/assets/i2.png"
+
+

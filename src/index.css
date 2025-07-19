@@ -1,0 +1,76 @@
+@import url("https://fonts.googleapis.com/css2?family=Emilys+Candy&family=Fredericka+the+Great&family=Rubik+Glitch&display=swap");
+@import "tailwindcss";
+@keyframes example {
+  0% {
+    rotate: -5deg;
+  }
+
+  50% {
+    rotate: 5deg;
+  }
+  100% {
+    rotate: -5deg;
+  }
+}
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+
+  background-color: #141409;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.App {
+  @apply absolute
+  w-[100%]
+   h-50000 
+
+  flex flex-col items-center
+
+  
+  /* bg-[url('../src/assets/i3.png')]; */;
+}
+
+.InBar {
+  transform: translateY(-40px);
+  @apply animate-pulse border-2 fixed w-[30%] h-150 mt-25 text-center pt-[40%];
+}
+
+/* .c3 {
+  @apply fixed z-1000 fixed scale-75 flex justify-center;
+} */
+/* 100////// */
+.Trigger {
+  @apply w-20 h-10 bg-zinc-500 mt-200;
+}
+.Triggerb {
+  @apply absolute w-10 h-10 bg-zinc-500 mt-200;
+}
+
+.Image {
+  background-image: url("../src/assets/i3.png");
+  background-size: 100%, auto;
+  @apply fixed mt-7 rounded-3xl w-[500px] h-[700px];
+}
+
+.lampBar {
+  transform: translateY(0px) translateX(0px);
+  @apply fixed z-800 w-[500px];
+}
+/*  800*/
+.lamp {
+  animation-name: example;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  transform-origin: 100% -200%;
+
+  /* animation-timing-function: ease-in-out; */
+  transform: translateY(-500px) translateX(200px);
+  @apply relative z-850 scale-50 w-90 h-90 text-green-500 bg-radial from-yellow-200/70 from-5% to-yellow-100/0 to-70%;
+}
